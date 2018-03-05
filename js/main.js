@@ -129,6 +129,8 @@ window.addEventListener('load', () => {
       }
     })
   }
+
+  if (window.scrollY > 0) setHighlightPosition()
 })
 
 window.addEventListener('scroll', _.throttle(setHighlightPosition, 100))
