@@ -305,8 +305,13 @@ section h2 {
 .content {
   max-width: var(--readable-width);
   min-width: var(--min-width);
-  margin: 0 9rem;
   padding: 0 1rem var(--baseline) 1rem;
+}
+
+@media screen and (min-width: 40rem) {
+  .content {
+    margin: 0 9rem;
+  }
 }
 
 #mission,
