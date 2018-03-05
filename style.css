@@ -259,9 +259,6 @@ header .title h2 {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-image: url('Coverr/Snapshots/Love-Coding.jpg');
-  background-position: center;
-  background-size: cover;
 }
 
 .bgvideo {
@@ -275,6 +272,9 @@ header .title h2 {
   width: auto;
   height: auto;
   overflow: hidden;
+  background-image: url('Coverr/Snapshots/Love-Coding.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 h1,
