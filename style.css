@@ -101,7 +101,7 @@ nav a {
   height: var(--item-height);
 }
 
-@media screen and (min-width: 40rem) {
+@media screen and (min-width: 40rem) and (min-height: 26.5rem){
   nav {
     top: 1rem;
     right: 1rem;
@@ -308,7 +308,7 @@ section h2 {
   padding: 0 1rem var(--baseline) 1rem;
 }
 
-@media screen and (min-width: 40rem) {
+@media screen and (min-width: 40rem) and (min-height: 26.5rem) {
   .content {
     margin: 0 9rem;
   }
