@@ -295,7 +295,8 @@ header .title .caption {
   background-size: cover;
 }
 
-section h2 {
+section h2,
+footer h2 {
   font-size: 2.5rem;
   color: teal;
   margin: 0;
@@ -305,12 +306,6 @@ section h2 {
   flex: 0 0 100%;
   text-align: center;
   border-bottom: 1px inset silver;
-  padding-bottom: var(--baseline);
-}
-
-.header h1 {
-  margin: 0;
-  padding-top: var(--baseline);
   padding-bottom: var(--baseline);
 }
 
@@ -465,26 +460,26 @@ section h2 {
   max-width: var(--two-column-width);
 }
 
-.job .title,
-.job .employer {
+#history .job .title,
+#history .job .employer {
   font-weight: bold;
 }
 
-.job .title {
+#history .job .title {
   font-size: 1.2em;
 }
 
-.job .description {
+#history .job .description {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.8s;
 }
 
-.job .description.show {
+#history .job .description.show {
   max-height: calc(var(--baseline) * 30);
 }
 
-.job .read-description {
+#history .job .read-description {
   border: none;
   border-top: 1px solid silver;
   background-color: transparent;
@@ -494,7 +489,7 @@ section h2 {
   margin-bottom: var(--baseline);
 }
 
-.job .read-description:focus {
+#history .job .read-description:focus {
   outline: none;
 }
 
@@ -746,5 +741,144 @@ footer {
   footer {
     margin-top: 0;
     border-top: 0;
+  }
+}
+
+@media print {
+  .container {
+    background-color: white;
+  }
+
+  .container::before {
+    content: 'Print Version\A For full details please visit https://vaggrippino.github.io/CVRemix/ on the web';
+    display: block;
+    width: 80%;
+    margin: 0 auto var(--baseline);
+    text-align: center;
+    font-weight: bold;
+    padding: 0.25em;
+    border: 1px solid silver;
+    white-space: pre;
+  }
+
+  nav { display: none; }
+  .bgvideo-container { display: none; }
+
+  header {
+    background-color: white;
+    color: black;
+    height: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-color: silver;
+    border-style: solid;
+    border-width: 1px 0;
+  }
+
+  header .title {
+    display: flex;
+    align-items: baseline;
+  }
+
+  header .title h1 {
+    font-size: 2rem;
+    flex: 0 1 auto;
+    padding: var(--baseline) 1rem;
+  }
+
+  header .title .caption {
+    font-size: 1rem;
+    flex: 0 1 auto;
+  }
+
+  .stack { display: none; }
+
+  section {
+    border-bottom: 1px solid silver;
+    margin-bottom: var(--baseline);
+  }
+
+  section h2,
+  footer h2 {
+    background-color: white;
+    color: black;
+  }
+
+  #mission,
+  #bio,
+  #skills,
+  #history,
+  #education,
+  #certification,
+  #connect {
+    background-color: white;
+    color: black;
+  }
+
+  #bio,
+  #skills {
+    break-inside: avoid;
+  }
+
+  #history,
+  #certification {
+    break-before: page;
+  }
+
+  #mission,
+  #mission h2 {
+    background-color: white;
+    color: black;
+  }
+
+  #bio .location a {
+    display: none;
+  }
+
+  #skills .more-info {
+    display: none;
+  }
+
+  #history .job:not(:last-of-type) {
+    border-bottom: 1px solid silver;
+    margin-bottom: var(--baseline);
+    padding-bottom: var(--baseline);
+  }
+
+  #history .read-description {
+    display: none;
+  }
+
+  #education h2 {
+    border-bottom: 1px solid silver;
+    margin-bottom: var(--baseline);
+  }
+
+  #education .readmore {
+    display: none;
+  }
+
+  #certification .description {
+    display: none;
+  }
+
+  #certification figcaption { display: none; }
+
+  #certification .certificate:not(:last-of-type) {
+    padding-bottom: var(--baseline);
+    margin-bottom: var(--baseline);
+    border-bottom: 1px solid silver;
+  }
+
+  #certification .certificate-image img {
+    width: 60%;
+  }
+
+  #connect {
+    height: auto;
+  }
+
+  #connect a {
+    color: black;
   }
 }
