@@ -37,6 +37,12 @@ h4 {
   margin-bottom: var(--baseline);
 }
 
+h1,
+h2 {
+  margin: 0;
+  padding: var(--baseline) 0;
+}
+
 .container {
   margin: 0 auto;
 }
@@ -79,7 +85,9 @@ nav {
 }
 
 nav.show {
-  max-height: calc(var(--item-height) * 9);
+  height: calc(var(--item-height) * 9);
+  max-height: 100vh;
+  overflow: auto;
 }
 
 nav ul {
@@ -135,21 +143,31 @@ header .title {
   text-align: center;
 }
 
-header .title h1,
-header .title h2 {
-  flex: 100%;
-}
-
 header .title h1 {
+  flex: 100%;
   font-family: "Heebo", sans-serif;
   font-size: 6vw;
   font-weight: 900;
-  order: 2;
+  position: relative;
 }
 
-header .title h2 {
+header .title h1::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  margin: auto;
+  border-bottom: 1px solid var(--white);
+}
+
+header .title .caption {
+  flex: 100%;
   font-family: "Open Sans", sans-serif;
-  order: 1;
+  font-size: 3vw;
+  padding: var(--baseline) 0;
 }
 
 .stack {
@@ -275,12 +293,6 @@ header .title h2 {
   background-image: url('Coverr/Snapshots/Love-Coding.jpg');
   background-position: center;
   background-size: cover;
-}
-
-h1,
-h2 {
-  margin: 0;
-  padding: var(--baseline) 0;
 }
 
 section h2 {
