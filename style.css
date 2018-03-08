@@ -53,7 +53,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   width: 100%;
   max-height: var(--item-height);
   background-color: var(--black);
@@ -68,7 +68,7 @@ nav {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   transition: all 0.25s;
   opacity: 1;
 }
@@ -95,7 +95,7 @@ nav ul {
   margin: 0;
   padding: 0;
   position: relative;
-  z-index: 200;
+  z-index: 300;
 }
 
 nav a {
@@ -177,31 +177,33 @@ header .title .caption {
   min-width: var(--min-width);
 }
 
-@media screen and (min-width: 40rem) {
-  .stack {
-    flex-wrap: nowrap;
-  }
-}
-
 .stage,
 .stage::after {
   cursor: pointer;
 }
 
 .stage {
-  --description-margin: 0.1em;
+  --description-margin: 0.1rem;
   --description-width: 15rem;
   --arrow-size: 6px;
 
-  flex: 0 0 5em;
+  flex: 0 0 33%;
   height: 5em;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 1px 1px 2em 0.5em;
+  margin: 0;
+  margin-bottom: 2em;
   padding: 0 0.5rem;
+  box-sizing: border-box;
   position: relative;
+}
+
+@media screen and (min-width: 60rem) {
+  .stack {
+    flex-wrap: nowrap;
+  }
 }
 
 .stage::after {
@@ -248,6 +250,7 @@ header .title .caption {
   position: absolute;
   top: 100%;
   left: 50%;
+  z-index: 100;
   transform: translateX(-50%);
   background-color: var(--white);
   color: var(--black);
@@ -258,6 +261,26 @@ header .title .caption {
   overflow: hidden;
 }
 
+.stage:nth-child(3n) .description {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+.stage:nth-child(3n+1) .description {
+  left: 0;
+  transform: none;
+}
+
+@media screen and (min-width: 40rem) {
+  .stage:nth-child(3n) .description,
+  .stage:nth-child(3n+1) .description {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
 .stage:focus .description {
   max-height: 20rem;
   max-width: var(--description-width);
@@ -265,9 +288,9 @@ header .title .caption {
 
 .description span {
   display: block;
-  width: calc(var(--description-width) - 2rem);
   text-align: center;
-  margin: 1rem;
+  margin: 0.5rem;
+  width: calc(var(--description-width) - 1rem);
 }
 
 .bgvideo-container {
