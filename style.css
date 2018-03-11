@@ -909,6 +909,7 @@ footer {
   }
 
   #connect {
+    break-inside: avoid;
     height: auto;
   }
 
