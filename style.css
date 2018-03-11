@@ -780,7 +780,7 @@ footer {
 
 @media print {
   .container {
-    background-color: white;
+    background-color: transparent;
   }
 
   .container::before {
@@ -839,7 +839,7 @@ footer {
 
   section h2,
   footer h2 {
-    background-color: white;
+    background-color: transparent;
     color: black;
   }
 
@@ -850,7 +850,7 @@ footer {
   #education,
   #certification,
   #connect {
-    background-color: white;
+    background-color: transparent;
     color: black;
   }
 
@@ -866,7 +866,7 @@ footer {
 
   #mission,
   #mission h2 {
-    background-color: white;
+    background-color: transparent;
     color: black;
   }
 
