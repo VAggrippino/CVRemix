@@ -746,6 +746,11 @@ footer {
 }
 
 @media print {
+  body,
+  #bio {
+    background-color: white;
+  }
+
   .container {
     background-color: transparent;
   }
