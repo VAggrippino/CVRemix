@@ -325,6 +325,10 @@ footer h2 {
   margin: 0;
 }
 
+footer h2 {
+  color: var(--white);
+}
+
 .header {
   flex: 0 0 100%;
   text-align: center;
@@ -747,7 +751,7 @@ footer {
   }
 
   .container::before {
-    content: 'Print Version\A For full details please visit my interactive CV on the web:\A https://vaggrippino.github.io/CVRemix/';
+    content: 'Print Version\A View an interactive version of this CV on the Web:\A https://vaggrippino.github.io/CVRemix/';
     display: block;
     width: 80%;
     margin: 0 auto var(--baseline);
@@ -800,23 +804,6 @@ footer {
     margin-bottom: var(--baseline);
   }
 
-  section h2,
-  footer h2 {
-    background-color: transparent;
-    color: black;
-  }
-
-  #mission,
-  #bio,
-  #skills,
-  #history,
-  #education,
-  #certification,
-  #connect {
-    background-color: transparent;
-    color: black;
-  }
-
   #bio,
   #skills {
     break-inside: avoid;
@@ -825,12 +812,6 @@ footer {
   #history,
   #certification {
     break-before: page;
-  }
-
-  #mission,
-  #mission h2 {
-    background-color: transparent;
-    color: black;
   }
 
   #bio .location a {
@@ -879,9 +860,5 @@ footer {
   #connect {
     break-inside: avoid;
     height: auto;
-  }
-
-  #connect a {
-    color: black;
   }
 }
