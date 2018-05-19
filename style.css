@@ -575,62 +575,6 @@ footer h2 {
   }
 }
 
-#education {
-  background-color: var(--tan);
-}
-
-#education .content {
-  max-width: var(--two-column-width);
-}
-
-#education .header,
-#education .detail {
-  max-width: var(--readable-width);
-  margin: auto;
-}
-
-#education .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-#education .header blockquote {
-  font-family: "Itim", serif;
-  white-space: pre-line;
-  margin: 0;
-}
-
-#education .header .author {
-  font-size: 0.9rem;
-  font-family: "Itim", serif;
-}
-
-.readmore {
-  border: none;
-  border-top: 1px solid silver;
-  color: var(--blue);
-  background: transparent;
-  display: block;
-  width: 100%;
-  line-height: 3em;
-}
-
-.readmore:focus {
-  outline: none;
-}
-
-#education .more {
-  max-height: 0;
-  transition: max-height 1s;
-  overflow: hidden;
-}
-
-#education .more.show {
-  max-height: calc(var(--baseline) * 20);
-}
-
 .certificate-image img {
   width: 100%;
 }
