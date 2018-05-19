@@ -388,10 +388,14 @@ footer h2 {
   border-radius: 50%;
   border: 0.5rem solid white;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  position: relative;
 }
 
 .profilePic img {
   width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #bio .about {
