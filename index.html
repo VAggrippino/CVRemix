@@ -143,86 +143,94 @@
   <section id="skills">
     <div class="content">
       <div class="header">
-        <h2>Primary Skills</h2>
+        <h2>Skills</h2>
         <div class="caption">The tools of my trade.</div>
       </div>
       <div class="detail">
-        <ul>
-          <li class="skill">HTML, CSS, &amp; JavaScript</li>
-          <li class="skill">React</li>
-          <li class="skill">Node.js</li>
-          <li class="skill">MongoDB</li>
-          <li class="skill">PHP</li>
-          <li class="skill">SQL</li>
-        </ul>
-        <div class="header">
-          <h2 class="name">Other Skills</h2>
-          <p>
-            If <code>CTRL-F</code> is the first thing you do when you look
-            at a résumé, this section is for you. I'm not just <i>keyword
-            stuffing</i>, though. I have real, verifiable knowledge of
-            all of these technologies and paradigms.
-          </p>
-          <p class="terms">
-            <!-- HTML Related -->
-            <span class="term">HTML5</span>,
-            <span class="term">HTML5 Web Storage API</span>,
-            <span class="term">Pug template engine</span>,
-
-            <!-- CSS Related -->
-            <span class="term">CSS3</span>,
-            <span class="term">Sass</span>,
-            <span class="term">SCSS</span>,
-            <span class="term">PostCSS</span>,
-            <span class="term">Bootstrap</span>,
-            <span class="term">CSS Animation</span>,
-            <span class="term">Flexbox</span>,
-            <span class="term">CSS Grid</span>,
-
-            <!-- Design Related -->
-            <span class="term">Responsive Web Design</span>,
-            <span class="term">Web Accessibility</span>,
-            <span class="term">Mobile-First Design</span>,
-            <span class="term">Cross-Browser Compatibility Testing</span>,
-
-            <!-- JavaScript Related -->
-            <span class="term">ES6 (ECMAScript 2015)</span>,
-            <span class="term">ES7 (ECMAScript 2016)</span>,
-            <span class="term">ES8 (ECMAScript 2017)</span>,
-            <span class="term">ECMAScript Next / ECMA-262</span>,
-            <span class="term">Babel</span>,
-            <span class="term">Gulp</span>,
-            <span class="term">JavaScript Promises</span>,
-            <span class="term">async / await</span>,
-            <span class="term">Graceful Degradation</span>,
-            <span class="term">Progressive Enhancement</span>,
-            <span class="term">Performance Optimization</span>,
-            <span class="term">jQuery</span>,
-
-            <!-- Development Tools / Environments -->
-            <span class="term">npm</span>,
-            <span class="term">Git</span>,
-            <span class="term">Docker</span>,
-            <span class="term">Visual Studio Code</span>,
-            <span class="term">Atom</span>,
-            <span class="term">Sublime Text</span>,
-            <span class="term">Vim</span>,
-
-            <!-- Linux Related -->
-            <span class="term">Linux</span>,
-            <span class="term">Ubuntu</span>,
-            <span class="term">Debian</span>,
-            <span class="term">RedHat</span>,
-            <span class="term">Centos</span>,
-
-            <!-- Web / Application Server -->
-            <span class="term">Apache</span>,
-            <span class="term">nginx</span>,
-
-            <!-- Database -->
-            <span class="term">Oracle</span>,
-            <span class="term">MySQL</span>
-          </p>
+        <div class="skill__categories">
+          <div class="skill__category">
+            <h3 class="category__title">Primary Skills</h3>
+            <table class="skill__table">
+              <tr class="skill">
+                <td class="skill__name">HTML / HTML5</td>
+                <td>
+                  <div class="skill__skillbar level-100"></div>
+                  <div class="skill__level">Advanced</div>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="skill__name">CSS / CSS3, Sass</td>
+                <td>
+                  <div class="skill__skillbar level-100"></div>
+                  <div class="skill__level">Advanced</div>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="skill__name">JavaScript / ES6+</td>
+                <td>
+                  <div class="skill__skillbar level-100"></div>
+                  <div class="skill__level">Advanced</div>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="skill__name">ReactJS</td>
+                <td>
+                  <div class="skill__skillbar level-60"></div>
+                  <div class="skill__level">Intermediate</div>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="skill__name">NodeJS</td>
+                <td>
+                  <div class="skill__skillbar level-80"></div>
+                  <div class="skill__level">Strong</div>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="skill__name">MongoDB</td>
+                <td>
+                  <div class="skill__skillbar level-80"></div>
+                  <div class="skill__level">Strong</div>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="skill__name">PHP</td>
+                <td>
+                  <div class="skill__skillbar level-60"></div>
+                  <div class="skill__level">A Little Rusty</div>
+                </td>
+              </tr>
+              <tr class="skill">
+                <td class="skill__name">MySQL</td>
+                <td>
+                  <div class="skill__skillbar level-80"></div>
+                  <div class="skill__level">Strong</div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="skill__category">
+            <h3 class="category__title">Related Skills</h3>
+            <ul class="skill__list">
+              <li class="skill__term">Bootstrap</li>
+              <li class="skill__term">jQuery</li>
+              <li class="skill__term">PostCSS</li>
+              <li class="skill__term">Responsive Web Design</li>
+              <li class="skill__term">Web Accessibility</li>
+              <li class="skill__term">Mobile-First Design</li>
+              <li class="skill__term">Cross-Browser Compatibility Testing</li>
+              <li class="skill__term">Babel</li>
+              <li class="skill__term">Graceful Degradation</li>
+              <li class="skill__term">Progressive Enhancement</li>
+              <li class="skill__term">Performance Optimization</li>
+              <li class="skill__term">npm</li>
+              <li class="skill__term">Git</li>
+              <li class="skill__term">Docker</li>
+              <li class="skill__term">Linux</li>
+              <li class="skill__term">Apache HTTP Server</li>
+              <li class="skill__term">Oracle</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -237,8 +245,8 @@
         <div class="job">
           <div class="title">Freelance Web Developer</div>
           <div class="employer">Self-Employed</div>
-          <div class="date">May 2005 &mdash; <em>Indeterminate</em></div>
-          <div class="location">Kota Kinabalu, Sabah, Malaysia / Castleton, New York, USA</div>
+          <div class="date">November 2008 &mdash; Present</div>
+          <div class="location">Ghodmode.com</div>
           <div class="description">
             <p>
               As a freelancer, I specialized in Front End Development, but I

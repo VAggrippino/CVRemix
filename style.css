@@ -430,16 +430,65 @@ footer h2 {
   background-color: var(--tan);
 }
 
-#skills .skill {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 0 0 var(--baseline) 0;
+.skill__categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+}
+
+.skill__category {
+  flex: 1;
+}
+
+.category__title {
+  color: teal;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.skill__table {
+  width: 100%;
+}
+
+.skill__table td {
+  padding: 5px 0;
+}
+
+.skill__name {
+  width: 8em;
+}
+
+.skill__skillbar {
+  width: 100%;
+  height: 0.75em;
+  background-color: silver;
+}
+
+.skill__skillbar::before {
+  display: block;
+  content: '';
+  background: #333;
+  height: 100%;
+}
+
+.skill__skillbar.level-60::before { width: 60%; }
+.skill__skillbar.level-80::before { width: 80%; }
+.skill__skillbar.level-100::before { width: 100%; }
+
+.skill__level {
+  text-align: right;
+  font-style: italic;
+  font-size: 0.75em;
   line-height: 1;
 }
 
-#skills .terms {
-  font-size: 0.75rem;
-  text-align: justify;
+.skill__list {
+  padding-left: 1.5em;
+  margin: 0;
+}
+
+.skill__term {
+  text-indent: -0.5em;
 }
 
 #history .header {
