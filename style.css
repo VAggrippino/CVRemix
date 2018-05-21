@@ -423,10 +423,6 @@ footer h2 {
   margin: 0;
 }
 
-.stats .age .fa-birthday-cake {
-  color: var(--blue);
-}
-
 .location a:visited {
   color: var(--blue);
 }

@@ -8,9 +8,6 @@ window.addEventListener('load', () => {
     stageLinks[i].addEventListener('click', e => e.preventDefault())
   }
 
-  // Calculate my age and insert it into the page
-  // document.querySelector('.age').innerHTML = getAge()
-
   // Add click handler for skill "more info" links
   let milinks = document.getElementsByClassName('more-info')
   for (let i = 0; i < milinks.length; i++) {
@@ -134,23 +131,4 @@ function setHighlightPosition () {
 
   highlight.style.transform = `translateY(${highlightPosition}px)`
   highlight.dataset.position = highlightPosition
-}
-
-function getAge () {
-  let birthDate = new Date('04 Oct 1972 12:25:00 EST')
-  let today = new Date()
-  let age = today.getFullYear() - birthDate.getFullYear()
-
-  if (today.getMonth() < birthDate.getMonth()) {
-    --age
-  }
-
-  if (today.getMonth() === birthDate.getMonth()) {
-    if (today.getDate() < birthDate.getDate()) {
-      --age
-    } else if (today.getDate() === birthDate.getDate()) {
-      age += ' <i class="fas fa-birthday-cake"></i>'
-    }
-  }
-  return age
 }
