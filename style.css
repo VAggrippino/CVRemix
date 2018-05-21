@@ -571,6 +571,13 @@ footer h2 {
   }
 }
 
+.certificate {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 1rem;
+  margin-bottom: var(--baseline);
+}
+
 .certificate--name {
   font-weight: bold;
 }
@@ -591,6 +598,21 @@ footer h2 {
 
 .certificate--source {
   color: blue;
+}
+
+@media screen and (min-width: 40rem) {
+  #certification .content {
+    max-width: var(--two-column-width);
+  }
+
+  .certificate {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: var(--baseline) var(--baseline) auto;
+  }
+
+  .certificate--image {
+    grid-row: 1 / span 3;
+  }
 }
 
 #connect {
