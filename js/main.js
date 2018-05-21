@@ -63,7 +63,7 @@ window.addEventListener('load', () => {
     let item = menuItems[i]
     let parent = item.parentNode
 
-    // Set the click handler for the menu handle.
+    // Show the menu when we click on the menu handle.
     if (parent.classList.contains('menu-handle')) {
       item.addEventListener('click', e => {
         e.preventDefault()
@@ -86,10 +86,10 @@ window.addEventListener('load', () => {
     })
   }
 
+  window.addEventListener('scroll', _.throttle(setHighlightPosition, 100))
+
   if (window.scrollY > 0) setHighlightPosition()
 })
-
-window.addEventListener('scroll', _.throttle(setHighlightPosition, 100))
 
 function setHighlightPosition () {
   let documentEnd = document.documentElement.scrollHeight - window.innerHeight
