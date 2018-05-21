@@ -23,22 +23,6 @@ window.addEventListener('load', () => {
     })
   }
 
-  // Add click handler for Education "Read More" link
-  let readmore = document.getElementsByClassName('readmore')[0]
-  let more = readmore.parentNode.getElementsByClassName('more')[0]
-  readmore.addEventListener('click', e => {
-    more.classList.toggle('show')
-  })
-
-  // Change the text of the button after the animation
-  more.addEventListener('transitionend', e => {
-    if (more.classList.contains('show')) {
-      readmore.innerText = 'Read Less'
-    } else {
-      readmore.innerText = 'Read More'
-    }
-  })
-
   // Handle read-description links in history section
   let rdb = document.getElementsByClassName('read-description')
   for (let i = 0; i < rdb.length; i++) {
