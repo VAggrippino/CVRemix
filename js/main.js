@@ -39,31 +39,6 @@ window.addEventListener('load', () => {
     }
   })
 
-  // Add the click handler for each of the certificate images to show the image
-  // full screen
-  let display = document.getElementById('certificate-display')
-  let certLinks = document.getElementsByClassName('certificate-image')
-  for (let i = 0; i < certLinks.length; i++) {
-    certLinks[i].addEventListener('click', e => {
-      e.preventDefault()
-      let image = e.target.getAttribute('src')
-      let frame = display.querySelector('.image-frame')
-
-      frame.style.backgroundImage = 'url("' + image + '")'
-      display.classList.add('show')
-    })
-  }
-
-  // Click handler to hide the full screen image
-  display.addEventListener('click', () => display.classList.remove('show'))
-
-  // Event handler to close the full screen image when pressing Escape or 'f'
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' || e.key === 'f' || e.key === 'F') {
-      display.classList.remove('show')
-    }
-  })
-
   // Handle read-description links in history section
   let rdb = document.getElementsByClassName('read-description')
   for (let i = 0; i < rdb.length; i++) {
