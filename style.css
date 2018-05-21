@@ -117,7 +117,7 @@ nav a {
     width: 7rem;
     max-height: none;
     border-radius: 0.5rem;
-    border: 0.25rem solid rgba(255, 255, 255, 0.1);
+    border: 0.25rem solid rgba(50, 50, 50, 0.3);
     background-clip: padding-box;
   }
 
