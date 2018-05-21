@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
   }
 
   // Calculate my age and insert it into the page
-  document.querySelector('.age').innerHTML = getAge()
+  // document.querySelector('.age').innerHTML = getAge()
 
   // Add click handler for skill "more info" links
   let milinks = document.getElementsByClassName('more-info')
