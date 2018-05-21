@@ -601,7 +601,7 @@ footer h2 {
 
 @media screen and (min-width: 40rem) {
   #connect {
-    min-height: none;
+    height: auto;
   }
 
   #connect .content {
