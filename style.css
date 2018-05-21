@@ -6,6 +6,7 @@
   --min-width: 15rem;
   --two-column-width: 46em;
   --three-column-width: 98rem;
+  --nav-item-height: calc(var(--baseline) * 2);
   --black: #111;
   --white: ghostwhite;
   --blue: cornflowerblue;
@@ -49,14 +50,12 @@ h2 {
 }
 
 nav {
-  --item-height: calc(var(--baseline) * 2);
-
   position: fixed;
   top: 0;
   left: 0;
   z-index: 200;
   width: 100%;
-  max-height: var(--item-height);
+  max-height: var(--nav-item-height);
   background-color: var(--black);
   overflow: hidden;
   transition: max-height 0.5s;
@@ -65,7 +64,7 @@ nav {
 #nav-highlight {
   background-color: teal;
   width: 100%;
-  height: var(--item-height);
+  height: var(--nav-item-height);
   position: absolute;
   top: 0;
   left: 0;
@@ -86,7 +85,7 @@ nav {
 }
 
 nav.show {
-  height: calc(var(--item-height) * 9);
+  height: calc(var(--nav-item-height) * 8);
   max-height: 100vh;
   overflow: auto;
 }
@@ -107,7 +106,7 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: var(--item-height);
+  height: var(--nav-item-height);
 }
 
 @media screen and (min-width: 40rem) and (min-height: 26.5rem) {
@@ -597,7 +596,7 @@ footer h2 {
 #connect {
   background-color: var(--black);
   color: var(--white);
-  height: 100vh;
+  height: calc(100vh - var(--nav-item-height) + 1px);
 }
 
 @media screen and (min-width: 40rem) {
