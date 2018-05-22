@@ -1,6 +1,4 @@
 /* global _ */
-const navPositions = [];
-
 window.addEventListener('load', () => {
   // Prevent following "stage" links
   const stageLinks = document.getElementsByClassName('stage');
@@ -41,59 +39,58 @@ window.addEventListener('load', () => {
 
   // Create lists of nav links and their corresponding targets
   const menu = document.getElementById('menu');
-  const menuItems = menu.getElementsByTagName('a');
+  const menuItems = Array.from(menu.getElementsByTagName('a'));
 
   // Create the list of nav item positions
-  for (let i = 0; i < menuItems.length; i += 1) {
-    const item = menuItems[i];
-    const parent = item.parentNode;
+  const nav = {};
+  nav.positions = menuItems
+    .filter((item) => {
+      const parent = item.parentNode;
 
-    // Skip the menu handle and the special "#top" link
-    if (parent.classList.contains('menu-handle')) continue;
-    if (item.getAttribute('href') === '#top') continue;
+      const handle = parent.classList.contains('menu-handle');
+      const top = item.getAttribute('href') === '#top';
+      return (!handle && !top);
+    })
+    .reduce((navPositions, item) => {
+      const id = item.getAttribute('href').slice(1);
+      const position = item.offsetTop;
+      return navPositions.concat({ id, position });
+    }, []);
 
-    const id = item.getAttribute('href').slice(1);
-    const position = item.offsetTop;
-    navPositions.push({ id, position });
-  }
+  // Show the menu when we click on the menu handle.
+  document.querySelector('.menu-handle').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('menu').classList.toggle('show');
+  });
 
-  for (let i = 0; i < menuItems.length; i += 1) {
-    const item = menuItems[i];
-    const parent = item.parentNode;
-
-    // Show the menu when we click on the menu handle.
-    if (parent.classList.contains('menu-handle')) {
+  menuItems
+    .filter(item => !item.classList.contains('menu-handle'))
+    .forEach((item) => {
+      const id = item.getAttribute('href').slice(1);
       item.addEventListener('click', (e) => {
         e.preventDefault();
-        menu.classList.toggle('show');
+        document.getElementById('menu').classList.remove('show');
+
+        if (id === 'top') {
+          window.scrollTo(0, 0);
+        } else {
+          const position = document.getElementById(id).offsetTop;
+          window.scrollTo(0, position);
+        }
       });
-      continue;
-    }
-
-    const id = item.getAttribute('href').slice(1);
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      menu.classList.remove('show');
-
-      if (id === 'top') {
-        window.scrollTo(0, 0);
-      } else {
-        const position = document.getElementById(id).offsetTop;
-        window.scrollTo(0, position);
-      }
     });
-  }
 
-  window.addEventListener('scroll', _.throttle(setHighlightPosition, 100));
+  window.addEventListener('scroll', _.throttle(() => setHighlightPosition(nav), 100));
 
-  if (window.scrollY > 0) setHighlightPosition();
+  if (window.scrollY > 0) setHighlightPosition(nav);
 });
 
-function setHighlightPosition() {
+function setHighlightPosition(nav) {
   const documentEnd = document.documentElement.scrollHeight - window.innerHeight;
   const scrollTop = window.scrollY;
   const scrollMiddle = scrollTop + (window.innerHeight / 2);
   const highlight = document.getElementById('nav-highlight');
+  const navPositions = nav.positions;
   let highlightPosition = 0;
 
   const targetPositions = [];
