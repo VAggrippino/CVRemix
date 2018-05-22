@@ -312,7 +312,7 @@ header .title .caption {
   width: auto;
   height: auto;
   overflow: hidden;
-  background-image: url('Coverr/Snapshots/Love-Coding.jpg');
+  background-image: url('../Coverr/Snapshots/Love-Coding.jpg');
   background-position: center;
   background-size: cover;
 }
