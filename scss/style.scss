@@ -6,7 +6,7 @@ $minWidth: 15rem;
 $twoColumnWidth: 46em;
 $threeColumnWidth: 98em;
 $navItemHeight: $baseline * 2;
-$navItems: 7;
+$navItems: 8;
 
 $wideLayoutMin: 40rem;
 $minFullMenuHeight: $navItemHeight * $navItems + 2rem;
@@ -659,7 +659,7 @@ http://nicolasgallagher.com/jump-links-and-viewport-positioning/#more-robust-met
 */
 section,
 footer {
-  --borderSize: calc($baseline * 2);
+  --borderSize: $baseline * 2;
   --margin: calc(0px - var(--borderSize));
 
   margin-top: var(--margin);
