@@ -659,11 +659,11 @@ http://nicolasgallagher.com/jump-links-and-viewport-positioning/#more-robust-met
 */
 section,
 footer {
-  --borderSize: $baseline * 2;
-  --margin: calc(0px - var(--borderSize));
+  $borderSize: $baseline * 2;
+  $margin: 0 - $borderSize;
 
-  margin-top: var(--margin);
-  border-top: var(--borderSize) solid transparent;
+  margin-top: $margin;
+  border-top: $borderSize solid transparent;
   background-clip: padding-box;
   display: flex;
   justify-content: center;
