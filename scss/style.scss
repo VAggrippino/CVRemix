@@ -74,13 +74,12 @@ nav {
   opacity: 1;
 }
 
-#nav-highlight[data-position="0"],
-#nav-highlight[data-position="48"] {
+#nav-highlight[data-position="0"] {
   opacity: 0;
 }
 
 @media screen and (min-width: $minFullMenuHeight) {
-  #nav-highlight[data-position="48"] {
+  #nav-highlight[data-position="1"] {
     opacity: 1;
   }
 }
@@ -348,8 +347,8 @@ footer h2 {
   }
 }
 
-#mission,
-#mission h2 {
+#objective,
+#objective h2 {
   background-color: teal;
   color: $white;
 }

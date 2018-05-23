@@ -44,17 +44,11 @@ window.addEventListener('load', () => {
   // Create the list of nav item positions
   const nav = {};
   nav.positions = menuItems
-    .filter((item) => {
-      const parent = item.parentNode;
-
-      const handle = parent.classList.contains('menu-handle');
-      const top = item.getAttribute('href') === '#top';
-      return (!handle && !top);
-    })
     .reduce((navPositions, item) => {
       const id = item.getAttribute('href').slice(1);
       const position = item.offsetTop;
-      return navPositions.concat({ id, position });
+      const targeted = id.length > 0 && id !== 'top';
+      return navPositions.concat({ id, position, targeted });
     }, []);
 
   // Show the menu when we click on the menu handle.
@@ -90,40 +84,36 @@ function setHighlightPosition(nav) {
   const scrollTop = window.scrollY;
   const scrollMiddle = scrollTop + (window.innerHeight / 2);
   const highlight = document.getElementById('nav-highlight');
-  const navPositions = nav.positions;
-  let highlightPosition = 0;
 
-  const targetPositions = [];
-  for (let i = 0; i < navPositions.length; i += 1) {
-    const { id } = navPositions[i];
-    const target = document.getElementById(id);
+  let highlightItem = 0;
+  for (let i = 0; i < nav.positions.length; i += 1) {
+    const item = nav.positions[i];
+    if (!item.targeted) continue;
+
+    const target = document.getElementById(item.id);
     const position = target.offsetTop;
 
-    targetPositions.push({ id, position });
-  }
+    // If the target is close to the top of the window, set the highlighted item
+    // and don't check any more.
+    if (
+      (Math.abs(position - scrollTop) < 25) ||
+      (scrollTop < position && position - scrollTop < 50)
+    ) {
+      highlightItem = i;
+      break;
+    }
 
-  if (scrollTop === 0) {
-    highlightPosition = 0;
-  } else if (scrollTop === documentEnd) {
-    highlightPosition = navPositions[navPositions.length - 1].position;
-  } else {
-    for (let i = 0; i < targetPositions.length; i += 1) {
-      const targetPosition = targetPositions[i].position;
-
-      // If the target is very close to the top of the window, use that for the
-      // active menu item
-      if (Math.abs(targetPosition - scrollTop) < 25 ||
-        (scrollTop < targetPosition && targetPosition - scrollTop < 50)) {
-        highlightPosition = navPositions[i].position;
-        break;
-      }
-
-      if (scrollMiddle > targetPosition) {
-        highlightPosition = navPositions[i].position;
-      }
+    // Check the position of a target near the middle of the window if there
+    // were no targets near the top of the window.
+    if (scrollMiddle > position) {
+      highlightItem = i;
     }
   }
 
-  highlight.style.transform = `translateY(${highlightPosition}px)`;
-  highlight.dataset.position = highlightPosition;
+  if (scrollTop === documentEnd) {
+    highlightItem = nav.positions.length - 1;
+  }
+
+  highlight.style.transform = `translateY(${nav.positions[highlightItem].position}px)`;
+  highlight.dataset.position = highlightItem;
 }
