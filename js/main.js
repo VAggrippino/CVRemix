@@ -58,7 +58,7 @@ window.addEventListener('load', () => {
   });
 
   menuItems
-    .filter(item => !item.classList.contains('menu-handle'))
+    .filter(item => !item.parentNode.classList.contains('menu-handle'))
     .forEach((item) => {
       const id = item.getAttribute('href').slice(1);
       item.addEventListener('click', (e) => {
