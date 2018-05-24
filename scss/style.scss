@@ -6,7 +6,8 @@ $minWidth: 15rem;
 $twoColumnWidth: 46em;
 $threeColumnWidth: 98em;
 $navItemHeight: $baseline * 2;
-$navItems: 7;
+$navItems: 6 + 2; // 2 extra for the connect rows
+$menuWidth: 8rem;
 
 $wideLayoutMin: 40rem;
 $minFullMenuHeight: $navItemHeight * $navItems + 2rem;
@@ -45,12 +46,35 @@ h1, h2 {
   padding: $baseline 0;
 }
 
+#nextPage {
+  display: none;
+}
+
+@media screen and (min-width: $wideLayoutMin) and (min-height: $minFullMenuHeight) {
+  #nextPage {
+    display: block;
+    width: $menuWidth;
+    height: $navItemHeight;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 0.5rem;
+    background: black;
+    animation: glow 1s ease-in-out infinite alternate both;
+  }
+
+  @keyframes glow {
+    from { background: transparentize(black, 0.8); }
+    to   { background: transparentize(teal, 0.2); }
+  }
+}
+
 .container {
   margin: 0 auto;
   width: 100%;
 }
 
-nav {
+#menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -60,6 +84,9 @@ nav {
   background-color: $black;
   overflow: hidden;
   transition: max-height 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #nav-highlight {
@@ -79,19 +106,13 @@ nav {
   opacity: 0;
 }
 
-@media screen and (min-width: $minFullMenuHeight) {
-  #nav-highlight[data-position="1"] {
-    opacity: 1;
-  }
-}
-
-nav.show {
+#menu.show {
   height: $navItemHeight * $navItems;
   max-height: 100vh;
   overflow: auto;
 }
 
-nav ul {
+#menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -99,7 +120,7 @@ nav ul {
   z-index: 300;
 }
 
-nav a {
+#nextPage, #menu a {
   color: $white;
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
@@ -110,19 +131,34 @@ nav a {
   height: $navItemHeight;
 }
 
+.menu--connect {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.5rem;
+  border-top: 1px solid $white;
+
+  a { width: $navItemHeight * 0.8; }
+}
+
 @media screen and (min-width: $wideLayoutMin) and (min-height: $minFullMenuHeight) {
-  nav {
-    top: 1rem;
-    right: 1rem;
+  #menu {
+    position: absolute;
+    top: 100vh;
+    right: 0;
     left: auto;
-    width: 7rem;
+    width: $menuWidth;
+    height: 100vh;
     max-height: none;
-    border-radius: 0.5rem;
-    border: 0.25rem solid rgba(50, 50, 50, 0.3);
-    background-clip: padding-box;
   }
 
-  nav .menu-handle {
+  #menu.fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+  #menu .menu-handle {
     display: none;
   }
 }
@@ -330,15 +366,10 @@ nav a {
   background-size: cover;
 }
 
-section h2,
-footer h2 {
+section h2 {
   font-size: 2.5rem;
   color: teal;
   margin: 0;
-}
-
-footer h2 {
-  color: $white;
 }
 
 .header {
@@ -637,50 +668,11 @@ footer h2 {
   }
 }
 
-#connect {
-  background-color: $black;
-  color: $white;
-  height: calc(100vh - $navItemHeight + 1px);
-}
-
-@media screen and (min-width: $wideLayoutMin) {
-  #connect {
-    height: auto;
-  }
-
-  #connect .content {
-    max-width: $twoColumnWidth;
-  }
-
-  #connect .detail {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 1rem;
-  }
-}
-
-#connect a {
-  display: flex;
-  align-items: center;
-  color: silver;
-  text-decoration: none;
-}
-
-#connect a:hover {
-  color: $white;
-}
-
-#connect a :first-child {
-  font-size: 2.5em;
-  margin: 0.5rem;
-}
-
 /*
 https://css-tricks.com/hash-tag-links-padding/
 http://nicolasgallagher.com/jump-links-and-viewport-positioning/#more-robust-method
 */
-section,
-footer {
+section {
   $borderSize: $baseline * 2;
   $margin: 0 - $borderSize;
 
@@ -692,8 +684,7 @@ footer {
 }
 
 @media screen and (min-width: $wideLayoutMin) and (min-height: $minFullMenuHeight) {
-  section,
-  footer {
+  section {
     margin-top: 0;
     border-top: 0;
   }
@@ -718,7 +709,7 @@ footer {
     white-space: pre;
   }
 
-  nav { display: none; }
+  #menu { display: none; }
   .bgvideo-container { display: none; }
 
   .page--header {
@@ -785,10 +776,5 @@ footer {
 
   #history .read-description {
     display: none;
-  }
-
-  #connect {
-    break-inside: avoid;
-    height: auto;
   }
 }

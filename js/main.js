@@ -1,21 +1,16 @@
 /* global _ */
 window.addEventListener('load', () => {
+  const nextPageLink = document.getElementById('nextPage');
+  nextPageLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = e.currentTarget.getAttribute('href').slice(1);
+    window.scrollTo(0, document.getElementById(target).offsetTop);
+  });
+
   // Prevent following "stage" links
   const stageLinks = document.getElementsByClassName('stage');
   for (let i = 0; i < stageLinks.length; i += 1) {
     stageLinks[i].addEventListener('click', e => e.preventDefault());
-  }
-
-  // Add click handler for skill "more info" links
-  const milinks = document.getElementsByClassName('more-info');
-  for (let i = 0; i < milinks.length; i += 1) {
-    const link = milinks[i];
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      let p = e.target.parentNode;
-      while (p.tagName !== 'DIV') p = p.parentNode;
-      p.classList.toggle('described');
-    });
   }
 
   // Handle read-description links in history section
@@ -38,8 +33,7 @@ window.addEventListener('load', () => {
   }
 
   // Create lists of nav links and their corresponding targets
-  const menu = document.getElementById('menu');
-  const menuItems = Array.from(menu.getElementsByTagName('a'));
+  const menuItems = Array.from(document.querySelectorAll('#menu ul li a'));
 
   // Create the list of nav item positions
   const nav = {};
@@ -47,7 +41,7 @@ window.addEventListener('load', () => {
     .reduce((navPositions, item) => {
       const id = item.getAttribute('href').slice(1);
       const position = item.offsetTop;
-      const targeted = id.length > 0 && id !== 'top';
+      const targeted = item.classList.contains('targeted');
       return navPositions.concat({ id, position, targeted });
     }, []);
 
@@ -75,8 +69,10 @@ window.addEventListener('load', () => {
     });
 
   window.addEventListener('scroll', _.throttle(() => setHighlightPosition(nav), 100));
+  window.addEventListener('scroll', _.throttle(() => setMenuPosition(), 10));
 
   if (window.scrollY > 0) setHighlightPosition(nav);
+  if (window.scrollY > 0) setMenuPosition();
 });
 
 function setHighlightPosition(nav) {
@@ -110,10 +106,21 @@ function setHighlightPosition(nav) {
   } else if (middleIndex !== -1) {
     highlightIndex = middleIndex;
   }
-  const highlightTarget = nav.positions[highlightIndex].id || 'top';
-
   if (scrollTop === documentEnd) highlightIndex = nav.positions.length - 1;
+
+  const highlightTarget = nav.positions[highlightIndex].id || 'top';
 
   highlight.style.transform = `translateY(${nav.positions[highlightIndex].position}px)`;
   highlight.dataset.target = highlightTarget;
+}
+
+function setMenuPosition() {
+  const menu = document.getElementById('menu');
+  const scrollTop = window.scrollY;
+
+  if (scrollTop >= document.querySelector('section').offsetTop) {
+    menu.classList.add('fixed');
+  } else {
+    menu.classList.remove('fixed');
+  }
 }
