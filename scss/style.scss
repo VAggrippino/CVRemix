@@ -127,7 +127,7 @@ nav a {
   }
 }
 
-header {
+.page-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -137,21 +137,27 @@ header {
   color: $white;
 }
 
-header .title {
+.page-header--title {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
 }
 
-header .title h1 {
+.page-header--title h1 {
   flex: 100%;
   font-family: "Heebo", sans-serif;
-  font-size: 6vw;
+  font-size: 10vw;
   font-weight: 900;
   position: relative;
 }
 
-header .title h1::after {
+@media screen and (min-width: $wideLayoutMin) {
+  .page-header--title h1 {
+    font-size: 5vw;
+  }
+}
+
+.page-header--title h1::after {
   content: '';
   display: block;
   position: absolute;
@@ -163,11 +169,17 @@ header .title h1::after {
   border-bottom: 1px solid $white;
 }
 
-header .title .caption {
+.page-header--caption {
   flex: 100%;
   font-family: "Open Sans", sans-serif;
-  font-size: 3vw;
+  font-size: 8vw;
   padding: $baseline 0;
+}
+
+@media screen and (min-width: $wideLayoutMin) {
+  .page-header--caption {
+    font-size: 3vw;
+  }
 }
 
 .stack {
@@ -700,7 +712,7 @@ footer {
   nav { display: none; }
   .bgvideo-container { display: none; }
 
-  header {
+  .page--header {
     background-color: transparent;
     color: black;
     height: auto;
@@ -711,22 +723,22 @@ footer {
     border-width: 1px 0;
   }
 
-  header .title {
+  .page-header--title {
     display: flex;
     align-items: baseline;
   }
 
-  header .title h1 {
+  .page-header--title h1 {
     font-size: 2rem;
     flex: 0 1 auto;
     padding: $baseline 1rem;
   }
 
-  header .title h1::after {
+  .page-header--title h1::after {
     display: none;
   }
 
-  header .title .caption {
+  .page-header--caption {
     font-size: 1rem;
     flex: 0 1 auto;
   }
