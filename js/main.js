@@ -85,35 +85,34 @@ function setHighlightPosition(nav) {
   const scrollMiddle = scrollTop + (window.innerHeight / 2);
   const highlight = document.getElementById('nav-highlight');
 
-  let highlightItem = 0;
-  for (let i = 0; i < nav.positions.length; i += 1) {
-    const item = nav.positions[i];
-    if (!item.targeted) continue;
+  const getTargetPosition = item => document.getElementById(item.id).offsetTop;
 
-    const target = document.getElementById(item.id);
-    const position = target.offsetTop;
+  const isCloseToTop = (item) => {
+    const position = getTargetPosition(item);
+    const closeAfter = scrollTop > position && scrollTop - position < 25;
+    const closeBefore = scrollTop < position && position - scrollTop < 50;
+    return closeAfter || closeBefore;
+  };
 
-    // If the target is close to the top of the window, set the highlighted item
-    // and don't check any more.
-    if (
-      (Math.abs(position - scrollTop) < 25) ||
-      (scrollTop < position && position - scrollTop < 50)
-    ) {
-      highlightItem = i;
-      break;
-    }
+  const isPastMiddle = item => scrollMiddle > getTargetPosition(item);
 
-    // Check the position of a target near the middle of the window if there
-    // were no targets near the top of the window.
-    if (scrollMiddle > position) {
-      highlightItem = i;
-    }
+  const findLastIndex = (array, test) => {
+    const tested = array.map(elem => test(elem));
+    return tested.lastIndexOf(true);
+  };
+
+  const topIndex = nav.positions.findIndex(item => item.targeted && isCloseToTop(item));
+  const middleIndex = findLastIndex(nav.positions, item => item.targeted && isPastMiddle(item));
+
+  let highlightIndex = 0;
+  if (topIndex !== -1) {
+    highlightIndex = topIndex;
+  } else if (middleIndex !== -1) {
+    highlightIndex = middleIndex;
   }
 
-  if (scrollTop === documentEnd) {
-    highlightItem = nav.positions.length - 1;
-  }
+  if (scrollTop === documentEnd) highlightIndex = nav.positions.length - 1;
 
-  highlight.style.transform = `translateY(${nav.positions[highlightItem].position}px)`;
-  highlight.dataset.position = highlightItem;
+  highlight.style.transform = `translateY(${nav.positions[highlightIndex].position}px)`;
+  highlight.dataset.position = highlightIndex;
 }
