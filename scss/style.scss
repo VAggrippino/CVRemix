@@ -624,7 +624,16 @@ footer h2 {
   }
 
   .certificate--image {
-    grid-row: 1 / span 3;
+    grid-row: 1 / span 4;
+  }
+
+  .certificate--headline {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 
