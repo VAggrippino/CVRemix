@@ -110,9 +110,10 @@ function setHighlightPosition(nav) {
   } else if (middleIndex !== -1) {
     highlightIndex = middleIndex;
   }
+  const highlightTarget = nav.positions[highlightIndex].id || 'top';
 
   if (scrollTop === documentEnd) highlightIndex = nav.positions.length - 1;
 
   highlight.style.transform = `translateY(${nav.positions[highlightIndex].position}px)`;
-  highlight.dataset.position = highlightIndex;
+  highlight.dataset.target = highlightTarget;
 }
