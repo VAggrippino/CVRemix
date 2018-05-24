@@ -533,7 +533,7 @@ footer h2 {
 }
 
 #history .job .description.show {
-  max-height: calc($baseline * 30);
+  max-height: $baseline * 30;
 }
 
 #history .job .read-description {
