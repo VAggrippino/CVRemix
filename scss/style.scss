@@ -480,6 +480,12 @@ section h2 {
   grid-gap: 1em;
 }
 
+@media screen and (min-width: $wideLayoutMin) {
+  .skill--categories {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
 .skill--category {
   flex: 1;
 }
@@ -490,16 +496,8 @@ section h2 {
   font-style: italic;
 }
 
-.skill--table {
-  width: 100%;
-}
-
-.skill--table td {
-  padding: 5px 0;
-}
-
-.skill--name {
-  width: 8em;
+.skill--detail {
+  margin: 0;
 }
 
 .skill--skillbar {
@@ -526,13 +524,9 @@ section h2 {
   line-height: 1;
 }
 
-.skill--list {
-  padding-left: 1.5em;
-  margin: 0;
-}
-
-.skill--term {
-  text-indent: -0.5em;
+ul.skill--list {
+  padding-left: 30px;
+  text-indent: -0.25em;
 }
 
 #history .header {
