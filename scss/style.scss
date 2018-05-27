@@ -26,7 +26,7 @@ body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
   overflow: auto;
-  color: $black;
+  color: black;
   background-color: $white;
 }
 
@@ -301,7 +301,7 @@ h1, h2 {
   z-index: 100;
   transform: translateX(-50%);
   background-color: $white;
-  color: $black;
+  color: black;
   margin: var(--description-margin);
   border-radius: 0.5rem;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -399,7 +399,7 @@ section h2 {
 
 #bio {
   background-color: $white;
-  color: $black;
+  color: black;
   width: 100%;
 }
 
